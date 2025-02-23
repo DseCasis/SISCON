@@ -13,6 +13,5 @@ class Military_personal extends Model
         'last_name',
         'unit_id',
         'rank_id'
-
     ];
 }
