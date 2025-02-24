@@ -11,7 +11,7 @@ class Civil_Vehicle_Registration extends Model
         'vehicle_id',
         'color',
         'observations',
-        'civilian_personnel',
+        'civilian_personnel_id',
         'location_id',
         'vehicle_brand_id',
         'vehicle_type_id',

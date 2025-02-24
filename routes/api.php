@@ -23,8 +23,8 @@ Route::post('addCivilianPersonnel',[\App\Http\Controllers\UserController::class,
 Route::post('addMilitaryPersonal',[\App\Http\Controllers\UserController::class, 'addMilitaryPersonal']);
 Route::get('getAllMilitaryPersonal',[\App\Http\Controllers\UserController::class, 'getAllMilitaryPersonal']);
 
-Route::post('addRank',[\App\Http\Controllers\MiscelaneaController::class, 'addRank']);
-Route::get('getRank',[\App\Http\Controllers\MiscelaneaController::class, 'getRank']);
+Route::post('addMilitaryVehicle',[\App\Http\Controllers\VehicleController::class, 'addMilitaryVehicle']);
+Route::get('getAllMilitaryVehicle',[\App\Http\Controllers\VehicleController::class, 'getAllMilitaryVehicle']);
 
-Route::post('addRank',[\App\Http\Controllers\MiscelaneaController::class, 'addRank']);
+Route::post('addCivilVehicle',[\App\Http\Controllers\VehicleController::class, 'addCivilVehicle']);
 Route::get('getRank',[\App\Http\Controllers\MiscelaneaController::class, 'getRank']);
