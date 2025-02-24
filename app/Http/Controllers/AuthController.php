@@ -15,7 +15,7 @@ class AuthController extends Controller
                 'message'=>'invalid credentials!'
             ], 404);
         }
-        $user =Auth:::user();
+        $user =Auth::user();
         $token = $user->createToken('token')->plainTextToken;
 
         return (new UserResource($user))->additional([
