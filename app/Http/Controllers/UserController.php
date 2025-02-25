@@ -7,6 +7,7 @@ use App\Http\Resources\CivilianPersonnelResource;
 use App\Models\Civilian_Personnel;
 use App\Models\Military_personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -160,6 +161,7 @@ class UserController extends Controller
         $user->cedula = $request->input('cedula');
         $user->first_name= $request->input('first_name');
         $user->last_name= $request->input('last_name');
+        $user->password= Hash::make ($request->input('cedula'));
         $user->unit_id= $request->input('unit_id');
         $user->rank_id= $request->input('rank_id');
         $user->save();

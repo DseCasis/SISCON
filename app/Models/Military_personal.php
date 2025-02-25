@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Military_personal extends Model
+class Military_personal extends Authenticatable
 {
+    use HasFactory, Notifiable;
+
     protected $table = 'militaries_personal';
     protected $fillable = [
         'cedula',
         'first_name',
         'last_name',
+        'password',
         'unit_id',
         'rank_id'
     ];

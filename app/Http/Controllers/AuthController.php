@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MilitaryResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,19 +11,19 @@ class AuthController extends Controller
 {
 
     public function login(Request $request){
-        if(!Auth::attempt($request->only('CI','password'))){
+        if(!Auth::attempt($request->only('cedula','password'))){
             return response([
                 'message'=>'invalid credentials!'
             ], 404);
         }
-        $user =Auth::user();
+        $user = Auth::user();
         $token = $user->createToken('token')->plainTextToken;
 
-        return (new UserResource($user))->additional([
+        return (new MilitaryResource($user))->additional([
             'token'=>$token,
             'msg'=>[
                 'summary' => 'Login success',
-                'detail' => '',
+                'detail' => $token,
                 'code' => '200'
             ]
         ])->response()->setStatusCode(200);

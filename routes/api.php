@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::post('login',[\App\Http\Controllers\AuthController::class, 'login']);
+
 Route::post('CivilianPersonnel',[\App\Http\Controllers\UserController::class, 'store']);
 
 Route::post('addVehicleType',[\App\Http\Controllers\VehicleController::class, 'addVehicleType']);

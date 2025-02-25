@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cedula');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('password');
 
             $table->foreignId('unit_id')->constrained('units');
             $table->foreignId('rank_id')->constrained('ranks');
