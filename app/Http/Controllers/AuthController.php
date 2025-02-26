@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MilitaryResource;
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,10 +16,10 @@ class AuthController extends Controller
             ], 404);
         }
         $user = Auth::user();
-        $token = $user->createToken('token')->plainTextToken;
+        $token = $user->createToken('authToken')->plainTextToken;
 
         return (new MilitaryResource($user))->additional([
-            'token'=>$token,
+            'authToken'=>$token,
             'msg'=>[
                 'summary' => 'Login success',
                 'detail' => $token,

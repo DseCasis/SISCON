@@ -12,4 +12,11 @@ class Vehicle_Type extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function vehicles_type(){
+        return $this->hasMany(Military_Vehicle_Registration::class);
+    }
+    public function civil_vehicles_types(){
+        return $this->hasMany(Civil_Vehicle_Registration::class, 'vehicle_type_id');
+    }
 }

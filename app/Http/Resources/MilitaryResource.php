@@ -15,6 +15,7 @@ class MilitaryResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this-> id,
             'cedula' => $this->cedula,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,

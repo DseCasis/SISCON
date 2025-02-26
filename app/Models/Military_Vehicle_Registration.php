@@ -16,4 +16,20 @@ class Military_Vehicle_Registration extends Model
         'vehicle_brand_id',
         'vehicle_type_id',
     ];
+
+    public function military_personnel(){
+        return $this->belongsTo(Military_personal::class);
+    }
+
+    public function location(){
+        return $this->belongsTo(Location::class);
+    }
+
+    public function vehicle_brand(){
+        return $this->belongsTo(Vehicle_Brand::class);
+    }
+    public function vehicle_type(){
+        return $this->belongsTo(Vehicle_Type::class);
+    }
+
 }

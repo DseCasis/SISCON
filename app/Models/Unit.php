@@ -10,4 +10,8 @@ class Unit extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function Unit(){
+        return $this->hasMany(Military_personal::class);
+    }
 }

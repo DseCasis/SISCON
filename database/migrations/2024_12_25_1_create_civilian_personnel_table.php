@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->integer('cedula')->comment("numero de cedula de identidad");
+            $table->integer('cedula')->comment("numero de cedula de identidad")-> unique();
             $table->string('first_name');
             $table->string('last_name');
         });

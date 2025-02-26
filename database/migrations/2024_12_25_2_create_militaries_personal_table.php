@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->string('cedula');
+            $table->string('cedula')-> unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('password');

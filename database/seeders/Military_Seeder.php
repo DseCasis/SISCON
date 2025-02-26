@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Location;
 use App\Models\Rank;
 use App\Models\Unit;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -47,11 +48,6 @@ class Military_Seeder extends Seeder
             Unit::create($Unit);
         }
 
-
-        foreach ($military_ranks as $military_rank) {
-            Rank::create($military_rank);
-        }
-
         $locations = [
             ['name' => 'EMPALME'],
             ['name' => 'SABIANGO'],
@@ -59,7 +55,7 @@ class Military_Seeder extends Seeder
             ['name' => 'CENTRO MACARÁ'],
         ];
         foreach ($locations as $location) {
-            Unit::create($location);
+            Location::create($location);
         }
     }
 }

@@ -10,4 +10,8 @@ class Rank extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function Rank(){
+        return $this->hasMany(Military_personal::class);
+    }
 }

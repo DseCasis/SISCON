@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CivilianPersonnelCollection;
 use App\Http\Resources\CivilianPersonnelResource;
+use App\Http\Resources\MilitaryResource;
 use App\Models\Civilian_Personnel;
 use App\Models\Military_personal;
+use App\Models\Rank;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -138,18 +141,11 @@ class UserController extends Controller
 
     public function getAllMilitaryPersonal(Request $request)
     {
-        $MilitaryPersonal = Military_personal::all();
+        $MilitaryPersonal = Military_personal::with(['Unit', 'rank'])->get()->toArray();
 
-        $totalMilitaryPersonal = $MilitaryPersonal->count();
-
-        return (new CivilianPersonnelCollection($MilitaryPersonal))->additional([
-            'msg' => [
-                'summary' => 'success',
-                'detail' => 'Personal militar devuelto correctamente',
-                'code' => '200'
-            ],
-            'totalMilitaryPersonal' => $totalMilitaryPersonal,
-        ])->response()->setStatusCode(200);
+        return response()->json([
+            'data' => $MilitaryPersonal,
+        ], 200);
     }
 
     /**
@@ -162,21 +158,19 @@ class UserController extends Controller
         $user->first_name= $request->input('first_name');
         $user->last_name= $request->input('last_name');
         $user->password= Hash::make ($request->input('cedula'));
-        $user->unit_id= $request->input('unit_id');
-        $user->rank_id= $request->input('rank_id');
+
+        $user->Unit()->associate(Unit::find($request->input('unit')));
+        $user->Rank()->associate(Rank::find($request->input('rank')));
+
         $user->save();
 
-        return response()->json([
-            'data' => [
-                'id' => $user->id,
-                'name' => $user->name,
-            ],
-            'msg' => [
+        return (new MilitaryResource($user))->additional([
+            'msg'=>[
                 'summary' => 'success',
-                'detail' => 'El personal militar se ha agregado de manera correcta',
-                'code' => '201'
+                'detail' => 'El usuario a sido creado',
+                'code' => '200'
             ]
-        ], 200);
+        ])->response()->setStatusCode(200);
     }
 
     /**

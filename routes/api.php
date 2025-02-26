@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login',[\App\Http\Controllers\AuthController::class, 'login']);
 
-Route::post('CivilianPersonnel',[\App\Http\Controllers\UserController::class, 'store']);
-
 Route::post('addVehicleType',[\App\Http\Controllers\VehicleController::class, 'addVehicleType']);
 Route::get('getVehicleType',[\App\Http\Controllers\VehicleController::class, 'getVehicleType']);
 
@@ -29,4 +27,8 @@ Route::post('addMilitaryVehicle',[\App\Http\Controllers\VehicleController::class
 Route::get('getAllMilitaryVehicle',[\App\Http\Controllers\VehicleController::class, 'getAllMilitaryVehicle']);
 
 Route::post('addCivilVehicle',[\App\Http\Controllers\VehicleController::class, 'addCivilVehicle']);
-Route::get('getRank',[\App\Http\Controllers\MiscelaneaController::class, 'getRank']);
+Route::get('getAllCivilVehicle',[\App\Http\Controllers\VehicleController::class, 'getAllCivilVehicle']);
+
+Route::get('getAllVehicles',[\App\Http\Controllers\VehicleController::class, 'getAllVehicles']);
+
+Route::get('getLocation',[\App\Http\Controllers\MiscelaneaController::class, 'getLocation']);

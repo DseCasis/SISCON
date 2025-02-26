@@ -13,4 +13,8 @@ class Civilian_Personnel extends Model
       'last_name',
     ];
 
+    public function civil_personnel(){
+        return $this->hasMany(Civil_Vehicle_Registration::class);
+    }
+
 }

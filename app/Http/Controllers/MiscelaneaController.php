@@ -58,7 +58,7 @@ class MiscelaneaController extends Controller
 
     public function getRank()
     {
-        $Rank = Unit::all();
+        $Rank = Rank::all();
 
         return response()->json([
             'data' => $Rank,
@@ -86,7 +86,7 @@ class MiscelaneaController extends Controller
 
     public function getLocation()
     {
-        $Location = Unit::all();
+        $Location = Location::all();
 
         return response()->json([
             'data' => $Location,
